@@ -10,9 +10,13 @@
 	                    http://www.springframework.org/schema/aop
 	                    http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-<!-- 스프링에게 TestBean 객체 t1을 만들기 명령 -->
-<!-- TestBean t1 = new TestBean() -->
-<!-- 익명 - id값 삭제 [ new TestBean() ] -->
-<bean id="t1" class="kr.hs.study.beans.TestBean"/>
+    <!-- 스프링에게 TestBean 객체 t1을 만들기 명령 -->
+    <!-- TestBean t1 = new TestBean() -->
+    <bean id="t1" class="kr.hs.study.beans.TestBean"/>
+
+    <bean id="t2" class="kr.hs.study.beans.TestBean2" scope="prototype"/>
+
+    <!-- 익명 - id값 삭제 [ new TestBean() ] -->
+    <!--<bean class="kr.hs.study.beans.TestBean"/>-->
 
 </beans>
