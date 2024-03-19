@@ -1,6 +1,7 @@
 package kr.hs.study;
 
 import kr.hs.study.beans.TestBean;
+import kr.hs.study.beans.TestBean2;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
@@ -26,6 +27,9 @@ public class Main {
 
         TestBean obj5 = ctx.getBean("t5", TestBean.class);
         obj5.prData();
+
+        TestBean2 obj6 = ctx.getBean("t6", TestBean2.class);
+        obj6.prData();
 
         ctx.close();
     }
