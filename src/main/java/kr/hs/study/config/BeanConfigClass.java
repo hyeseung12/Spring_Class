@@ -1,9 +1,6 @@
 package kr.hs.study.config;
 
-import kr.hs.study.beans.TestBean1;
-import kr.hs.study.beans.TestBean2;
-import kr.hs.study.beans.TestBean3;
-import kr.hs.study.beans.TestBean4;
+import kr.hs.study.beans.*;
 import org.springframework.context.annotation.*;
 
 // 스프링에게 명령을 내리는 설정파일
@@ -42,5 +39,11 @@ public class BeanConfigClass {
     @Lazy
     public TestBean4 java4_2() {
         return new TestBean4();
+    }
+
+    @Bean(initMethod = "init", destroyMethod = "destroy")
+    @Lazy
+    public TestBean5 java5() {
+        return new TestBean5();
     }
 }

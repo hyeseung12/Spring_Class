@@ -1,9 +1,6 @@
 package kr.hs.study;
 
-import kr.hs.study.beans.TestBean1;
-import kr.hs.study.beans.TestBean2;
-import kr.hs.study.beans.TestBean3;
-import kr.hs.study.beans.TestBean4;
+import kr.hs.study.beans.*;
 import kr.hs.study.config.BeanConfigClass;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -27,6 +24,9 @@ public class Main {
 
         TestBean4 t4 = ctx.getBean(TestBean4.class);
         System.out.println(t4);
+
+        TestBean5 t5 = ctx.getBean("java5", TestBean5.class);
+        System.out.println(t5);
 
         ctx.close();
     }
