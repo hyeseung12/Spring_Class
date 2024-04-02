@@ -1,7 +1,7 @@
 package kr.hs.study.beans;
 
 public class TestBean1 {
-    int data1;
+    private int data1;
     private String data2;
     private DataBean1 data3;
 
