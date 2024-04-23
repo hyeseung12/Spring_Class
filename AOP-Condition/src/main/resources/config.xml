@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans.xsd
+
+
+	                    http://www.springframework.org/schema/aop
+	                    http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <bean id="t1" class="kr.hs.study.beans.TestBean1"/>
+    <bean id="t2" class="kr.hs.study.beans2.TestBean1"/>
+
+    <bean id="advisor" class="kr.hs.study.advice.Advice"/>
+
+    <aop:config>
+        <aop:aspect ref="advisor">
+            <!-- 리턴타입, 클래스 이름 상관 없고 모든 패키지의 method1 이라는 이름의 메서드를 pointcut으로 지정 -->
+            <!-- <aop:pointcut id="point" expression="execution(* method1())"/>-->
+
+            <!-- void, TestBean1에 해당하는 메서드만 pointcut으로 지정 -->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.TestBean1.method1())"/>-->
+
+            <!-- void, TestBean1의 method1, 매개변수 int 1개 -->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.TestBean1.method1(int))"/>-->
+
+            <!-- void, TestBean1의 method1, 매개변수 String 1개 -->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.TestBean1.method1(String))"/>-->
+
+            <!-- void, TestBean1의 method1, 매개변수 모든 타입 매개변수 1개 (없으면 안됨) -->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.TestBean1.method1(*))"/>-->
+
+            <!-- void, TestBean1의 method1, 매개변수 int 2개 -->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.TestBean1.method1(int, int))"/>-->
+
+            <!-- void, TestBean1의 method1, 매개변수 모든 타입 2개 -->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.TestBean1.method1(*, *))"/>-->
+
+            <!-- void, TestBean1의 method1, 매개변수 모든 타입 0개 이상-->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.TestBean1.method1(..))"/>-->
+
+            <!-- void, TestBean1의 모든 메서드, 매개변수 모든 타입 0개 이상-->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.TestBean1.*(..))"/>-->
+
+            <!-- void, beans 패키지 안에 모든 패키지 안에 method1, 매개변수 모든 타입 0개 이상-->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.*.method1(..))"/>-->
+
+            <!-- void, beans 패키지 안에 모든 패키지 안에 모든 메서드, 매개변수 모든 타입 0개 이상-->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.beans.*.*(..))"/>-->
+
+            <!-- void, 모든 패키지 안에 모든 패키지 안에 모든 메서드, 매개변수 모든 타입 0개 이상-->
+            <!-- <aop:pointcut id="point" expression="execution(void kr.hs.study.*.*.*(..))"/>-->
+
+            <!-- void, 모든 것들..., 매개변수 모든 타입 0개 이상-->
+            <!-- <aop:pointcut id="point" expression="execution(void *.*(..))"/>-->
+
+            <!-- 모든 것들..., 매개변수 모든 타입 0개 이상-->
+            <!-- <aop:pointcut id="point" expression="execution(* *.*(..))"/>-->
+
+            <aop:before method="before" pointcut-ref="point"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
